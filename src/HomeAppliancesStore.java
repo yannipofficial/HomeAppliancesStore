@@ -1,7 +1,7 @@
 public class HomeAppliancesStore {
     static String companyName;
     static String companyLocation;
-    static Integer employeeCount;
+    static int employeeCount;
 
     public static String getCompanyName(){
         return companyName;
@@ -15,10 +15,10 @@ public class HomeAppliancesStore {
     public static void setCompanyLocation(String location){
         companyLocation = location;
     }
-    public static Integer getEmployeeCount(){
+    public static int getEmployeeCount(){
         return employeeCount;
     }
-    public static void setEmployeeCount(Integer count){
+    public static void setEmployeeCount(int count){
         employeeCount = count;
     }
     public static void main(String args[]){
