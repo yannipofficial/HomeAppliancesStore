@@ -1,4 +1,4 @@
-public class Fridge {
+public class Fridge extends Device{
     private int Width;
     private int Height;
     private int Depth;
@@ -32,13 +32,6 @@ public class Fridge {
     }
     //Getters
 
-    public int getWidth(){ return Width; }
-    public int getHeight(){ return Height; }
-    public int getDepth(){ return Depth; }
-    public String getManufacturer(){ return Manufacturer; }
-    public String getProductName(){ return ProductName; }
-    public String getProductType(){ return ProductType; }
-    public int getEnergyConsumption(){ return EnergyConsumption; }
     public int getCapacity(){ return Capacity; }
     public int getTemperatureSettings(){ return TemperatureSettings; }
     public boolean getHasFreezer(){ return hasFreezer; }
@@ -46,13 +39,6 @@ public class Fridge {
     public boolean getHasAutoTemperatureControl(){ return hasAutoTemperatureControl; }
 
     //Setters
-    public void setWidth(int v){ this.Width = v; }
-    public void setHeight(int v){ this.Height = v; }
-    public void setDepth(int v){ this.Depth = v; }
-    public void setManufacturer(String v){ this.Manufacturer = v; }
-    public void setProductName(String v){ this.ProductName = v; }
-    public void setProductType(String v){ this.ProductType = v; }
-    public void setEnergyConsumption(int v){ this.EnergyConsumption = v; }
     public void setCapacity(int v){ this.Capacity = v; }
     public void setTemperatureSettings(int v){ this.TemperatureSettings = v; }
     public void setHasFreezer(boolean v){ this.hasFreezer = v; }
@@ -70,7 +56,5 @@ public class Fridge {
         System.out.println("Capacity: "+this.Capacity+"lt. Temperature Settings:"+this.TemperatureSettings+" settings. Has Freezer: "+this.hasFreezer);
         System.out.println("Has AntiFrost: "+this.hasAntiFrost + ". Has Auto Temperature Control: "+this.hasAutoTemperatureControl);
         System.out.println("-------");
-    }
-    private void periodicMaintenance(){
     }
 }

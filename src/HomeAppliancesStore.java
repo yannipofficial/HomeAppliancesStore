@@ -21,15 +21,7 @@ public class HomeAppliancesStore {
     public static void setEmployeeCount(int count){
         employeeCount = count;
     }
-    public static void main(String args[]){
-        setCompanyName(args[0]);
-        setCompanyLocation(args[1]);
-        setEmployeeCount(Integer.parseInt(args[2]));
-        System.out.print("Company name: "+getCompanyName());
-        System.out.print(" Company location: "+getCompanyLocation());
-        System.out.print(" Employees: "+getEmployeeCount());
-        System.out.println(" ");
-
+    public static void main(String[] args){
         Fridge product1 = new Fridge(60,70,30,"LG","FreezePro","Fridge",180,80,5,true,true,true);
         WashingMachine product2 = new WashingMachine(60,80,60,"Samsung","WashPro","Washing Machine",250,40,5,200,46,true);
         AirCondition product3 = new AirCondition(80,40,30,"Philips","CoolPro","Air Conditioner",400,15000,45,10,false,true);
@@ -46,6 +38,21 @@ public class HomeAppliancesStore {
         int TotalProducts = product1.getObjectCount() + product2.getObjectCount() + product3.getObjectCount() + product4.getObjectCount();
         System.out.println("Total Products: " + TotalProducts);
 
+        deviceStatus(product1);
+
+    }
+
+    public static void deviceStatus(Device device){
+        System.out.println("Device is active?: " + device.status());
+        if (device instanceof Fridge) {
+            System.out.println("This device is a fridge");
+        } else if (device instanceof Oven){
+            System.out.println("This device is an oven");
+        } else if (device instanceof WashingMachine){
+            System.out.println("This device is a washing machine");
+        } else if (device instanceof AirCondition){
+            System.out.println("This device is an air condition");
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-public class AirCondition {
+public class AirCondition extends Device {
     private int Width;
     private int Height;
     private int Depth;
@@ -31,13 +31,6 @@ public class AirCondition {
         ObjectCount = ObjectCount + 1;
     }
     //Getters
-    public int getWidth(){ return Width; }
-    public int getHeight(){ return Height; }
-    public int getDepth(){ return Depth; }
-    public String getManufacturer(){ return Manufacturer; }
-    public String getProductName(){ return ProductName; }
-    public String getProductType(){ return ProductType; }
-    public int getEnergyConsumption(){ return EnergyConsumption; }
     public int getBTUPower(){ return BTUPower; }
     public int getNoiseLevel(){ return NoiseLevel; }
     public int getPrograms(){ return Programs; }
@@ -45,13 +38,6 @@ public class AirCondition {
     public boolean getHasDisplayScreen(){ return hasDisplayScreen; }
 
     //Setters
-    public void setWidth(int v){ this.Width = v; }
-    public void setHeight(int v){ this.Height = v; }
-    public void setDepth(int v){ this.Depth = v; }
-    public void setManufacturer(String v){ this.Manufacturer = v; }
-    public void setProductName(String v){ this.ProductName = v; }
-    public void setProductType(String v){ this.ProductType = v; }
-    public void setEnergyConsumption(int v){ this.EnergyConsumption = v; }
     public void setBTUPower(int v){ this.BTUPower = v; }
     public void setNoiseLevel(int v){ this.NoiseLevel = v; }
     public void setPrograms(int v){ this.Programs = v; }
@@ -70,6 +56,5 @@ public class AirCondition {
         System.out.println("Noise: "+this.NoiseLevel + "db. Has Display: "+this.hasDisplayScreen);
         System.out.println("-------");
     }
-    private void periodicMaintenance(){
-    }
+
 }
