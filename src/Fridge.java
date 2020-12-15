@@ -1,4 +1,5 @@
-public class Fridge extends Device{
+import java.io.Serializable;
+public class Fridge extends Device implements Serializable{
     private int Width;
     private int Height;
     private int Depth;
@@ -14,7 +15,9 @@ public class Fridge extends Device{
     private boolean hasAutoTemperatureControl;
 
     static int ObjectCount = 0;
-    public Fridge(){}
+    public Fridge(){
+        ObjectCount = ObjectCount + 1;
+    }
     public Fridge(int w,int h,int d,String manu,String name,String type,int energy,int cap,int tempset,boolean freezer,boolean antifrost,boolean tempcontrol){
         this.Width = w;
         this.Height = h;
@@ -45,7 +48,7 @@ public class Fridge extends Device{
     public void setHasAntiFrost(boolean v){ this.hasAntiFrost = v; }
     public void setHasAutoTemperatureControl(boolean v){ this.hasAutoTemperatureControl = v; }
 
-    public int getObjectCount() { return ObjectCount;}
+    public static int getObjectCount() { return ObjectCount;}
 
     public void printProduct(){
         System.out.println("-------");

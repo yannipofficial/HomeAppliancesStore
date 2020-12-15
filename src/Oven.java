@@ -1,4 +1,5 @@
-public class Oven extends Device{
+import java.io.Serializable;
+public class Oven extends Device implements Serializable{
     private int Width;
     private int Height;
     private int Depth;
@@ -14,7 +15,9 @@ public class Oven extends Device{
     private boolean hasTimer;
 
     static int ObjectCount = 0;
-    public Oven(){}
+    public Oven(){
+        ObjectCount = ObjectCount + 1;
+    }
     public Oven(int w,int h,int d,String manu,String name,String type,int energy,int cap,int tempset,boolean airfryers,boolean coils,boolean timer){
         this.Width = w;
         this.Height = h;

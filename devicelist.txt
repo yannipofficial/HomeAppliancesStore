@@ -1,0 +1,2 @@
+Fridge 5
+WashingMachine 6

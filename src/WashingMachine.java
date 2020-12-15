@@ -1,4 +1,5 @@
-public class WashingMachine extends Device {
+import java.io.Serializable;
+public class WashingMachine extends Device implements Serializable {
     private int Width = 100;
     private int Height = 120;
     private int Depth = 60;
@@ -14,7 +15,9 @@ public class WashingMachine extends Device {
     private boolean hasInverter = true;
 
     static int ObjectCount = 0;
-    public WashingMachine(){}
+    public WashingMachine(){
+        ObjectCount = ObjectCount + 1;
+    }
     public WashingMachine(int w,int h,int d,String manu,String name,String type,int energy,int cap,int set,int cycles,int noise,boolean inverter){
         this.Width = w;
         this.Height = h;

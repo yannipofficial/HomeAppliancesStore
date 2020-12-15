@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.Scanner;
+
 public class HomeAppliancesStore {
     static String companyName;
     static String companyLocation;
@@ -21,26 +24,63 @@ public class HomeAppliancesStore {
     public static void setEmployeeCount(int count){
         employeeCount = count;
     }
-    public static void main(String[] args){
-        Fridge product1 = new Fridge(60,70,30,"LG","FreezePro","Fridge",180,80,5,true,true,true);
-        WashingMachine product2 = new WashingMachine(60,80,60,"Samsung","WashPro","Washing Machine",250,40,5,200,46,true);
-        AirCondition product3 = new AirCondition(80,40,30,"Philips","CoolPro","Air Conditioner",400,15000,45,10,false,true);
-        Oven product4 = new Oven(100,120,100,"LG","CookPro","Oven",350,45,10,true,true,false);
-        Fridge product5 = new Fridge(60,70,30,"Samsung","FreezeProPlus","Fridge",180,80,5,true,true,true);
+    public static void main(String[] args) throws FileNotFoundException{
 
-        product1.printProduct();
-        product2.printProduct();
-        product3.printProduct();
-        product4.printProduct();
-        product5.printProduct();
+        int fridgesCount = readFile("devicelist.txt", "Fridge");
+        Fridge fridgeArray[] = new Fridge[fridgesCount];
+        if (fridgesCount > 0) {
+            for (int i = 0; i <= fridgesCount - 1; i++) {
+                fridgeArray[i] = new Fridge();
+            }
+            System.out.println("Fridges Created: " + fridgeArray[0].getObjectCount());
+        }
 
-        //Adding up the total products of each category
-        int TotalProducts = product1.getObjectCount() + product2.getObjectCount() + product3.getObjectCount() + product4.getObjectCount();
-        System.out.println("Total Products: " + TotalProducts);
+        int ovensCount = readFile("devicelist.txt", "Oven");
+        Oven ovensArray[] = new Oven[ovensCount];
+        if (ovensCount > 0) {
+            for (int i = 0; i <= ovensCount - 1; i++) {
+                ovensArray[i] = new Oven();
+            }
+            System.out.println("Ovens Created: " + ovensArray[0].getObjectCount());
+        }
 
-        deviceStatus(product1);
+        int airConditionsCount = readFile("devicelist.txt", "AirCondition");
+        AirCondition airConditionsArray[] = new AirCondition[airConditionsCount];
+        if (airConditionsCount > 0) {
+            for (int i = 0; i <= airConditionsCount - 1; i++) {
+                airConditionsArray[i] = new AirCondition();
+            }
+            System.out.println("Air Conditions Created: " + airConditionsArray[0].getObjectCount());
+        }
 
+        int washingMachinesCount = readFile("devicelist.txt", "WashingMachine");
+        WashingMachine washingMachinesArray[] = new WashingMachine[washingMachinesCount];
+        if (washingMachinesCount > 0) {
+            for (int i = 0; i <= washingMachinesCount - 1; i++) {
+                washingMachinesArray[i] = new WashingMachine();
+            }
+            System.out.println("Washing Machines Created: " + washingMachinesArray[0].getObjectCount());
+        }
+
+        Serialize(fridgeArray, ovensArray, airConditionsArray, washingMachinesArray);
     }
+
+    public static int readFile(String file, String devicetype) throws FileNotFoundException{
+        File myObj = new File(file);
+        Scanner s = new Scanner(myObj);
+        while(s.hasNextLine()) // Checks if there is another line
+        {
+            Scanner check = new Scanner(s.nextLine());
+            while(check.hasNext()){
+                if(check.next().equals(devicetype)){
+                    int returnNum =  check.nextInt();
+                    return returnNum;
+                }
+            }
+        }
+        return 0;
+    }
+
 
     public static void deviceStatus(Device device){
         System.out.println("Device is active?: " + device.status());
@@ -55,4 +95,21 @@ public class HomeAppliancesStore {
         }
     }
 
+    public static void Serialize(Fridge[] fridges, Oven[] ovens, AirCondition[] airConditions, WashingMachine[] washingMachines){
+        try
+        {
+            FileOutputStream fos = new FileOutputStream("serializedObjects.ser");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(fridges);
+            oos.writeObject(ovens);
+            oos.writeObject(airConditions);
+            oos.writeObject(washingMachines);
+            oos.close();
+            fos.close();
+        }
+        catch (IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
+    }
 }

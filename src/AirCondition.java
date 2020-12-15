@@ -1,4 +1,5 @@
-public class AirCondition extends Device {
+import java.io.Serializable;
+public class AirCondition extends Device  implements Serializable{
     private int Width;
     private int Height;
     private int Depth;
@@ -14,7 +15,9 @@ public class AirCondition extends Device {
     private boolean hasDisplayScreen;
 
     static int ObjectCount = 0;
-    public AirCondition(){}
+    public AirCondition(){
+        ObjectCount = ObjectCount + 1;
+    }
     public AirCondition(int w,int h,int d,String manu,String name,String type,int energy,int power,int noise,int progs,boolean portable,boolean screen){
         this.Width = w;
         this.Height = h;
